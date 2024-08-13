@@ -1,3 +1,5 @@
+import TicketStatusBadge from "@/components/TicketStatusBadge";
+
 import {
     Table,
     TableBody,
@@ -15,7 +17,7 @@ interface Props {
   }
 
 const DataTable = ( {tickets}: Props) => {
-    console.log(tickets)
+    
   return (
     <div className="w-full mt-5">
         <div className="rounded-xl sm:border">
@@ -26,7 +28,9 @@ const DataTable = ( {tickets}: Props) => {
                             Title
                         </TableHead>
                         <TableHead>
-                            Status
+                            <div className="flex justify-center">
+                                Status
+                            </div>
                         </TableHead>
                         <TableHead>
                             Priority
@@ -40,9 +44,21 @@ const DataTable = ( {tickets}: Props) => {
                     {tickets ? tickets.map((ticket) => (
                         <TableRow key={ticket.id} data-href="/">
                             <TableCell>{ticket.title}</TableCell>
-                            <TableCell>{ticket.status}</TableCell>
+                            <TableCell>
+                                <div className="flex justify-center">
+                                    <TicketStatusBadge status={ticket.status} />
+                                </div>
+                               
+                            </TableCell>
                             <TableCell>{ticket.priority}</TableCell>
-                            <TableCell>{ticket.createdAt.toLocaleDateString()}</TableCell>
+                            <TableCell>{ticket.createdAt.toLocaleDateString("en-US", {
+                        year: "2-digit",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "numeric",
+                        minute: "2-digit",
+                        hour12: true,
+                      })}</TableCell>
                         </TableRow>
                     )) : null}
                 </TableBody>
