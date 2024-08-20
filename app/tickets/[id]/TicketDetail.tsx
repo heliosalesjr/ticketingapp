@@ -12,6 +12,8 @@ import TicketStatusBadge from '@/components/TicketStatusBadge';
 import TicketPriority from '@/components/ui/TicketPriority';
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
+
+import ReactMarkdown from 'react-markdown';
   
 
 interface Props {
@@ -44,8 +46,11 @@ const TicketDetail = ( {ticket}: Props) => {
 
             </CardHeader>
 
-            <CardContent>
-                {ticket.description}
+            <CardContent className='prose dark:prose-invert'>
+                <ReactMarkdown>
+                    {ticket.description}
+                </ReactMarkdown>
+                
             </CardContent>
             
             <CardFooter>
