@@ -4,6 +4,12 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import Pagination from "@/components/Pagination";
 
+interface SearchParams {
+ 
+  page: string;
+  
+}
+
 const Tickets = async () => {
     const tickets = await prisma.ticket.findMany();
 
