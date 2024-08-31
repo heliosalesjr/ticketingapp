@@ -12,11 +12,11 @@ const MainNav = async () => {
     <div className='flex justify-between'>
         <MainNavLinks/>
         <div className='flex items-center gap-2'>
-            { session ? (
-            <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
-            ) : (
-            <Link href="/">Login</Link> 
-            )}
+        {session ? (
+          <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
+        ) : (
+          <Link href="/api/auth/signin">Login</Link>
+        )}
             
             <div className='px-4'>
                 <ModeToggle/>
