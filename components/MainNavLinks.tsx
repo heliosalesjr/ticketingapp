@@ -1,16 +1,35 @@
-"use client"
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 
-import React from 'react'
-import Link from 'next/link'
+const MainNavLinks = ({ role }: { role?: string }) => {
+  const links = [
+    { label: "Dashboard", href: "/", adminOnly: false },
+    { label: "Tickets", href: "/tickets", adminOnly: false },
+    { label: "Users", href: "/users", adminOnly: true },
+  ];
 
-const MainNavLinks = () => {
+  const currentPath = usePathname();
+  console.log(currentPath);
   return (
-    <div className='flex items-center gap-2'>
-        <Link href="/" className='navbar-link'>Dash</Link>
-        <Link href="/tickets" className='navbar-link'>Tickets</Link>
-        <Link href="/users" className='navbar-link'>Users</Link>
+    <div className="flex items-center gap-2">
+      {links
+        .filter((link) => !link.adminOnly || role === "ADMIN")
+        .map((link) => (
+          <Link
+            href={link.href}
+            className={`navbar-link ${
+              currentPath == link.href &&
+              "cursor-default text-primary/70 hover:text-primary/60"
+            }`}
+            key={link.label}
+          >
+            {link.label}
+          </Link>
+        ))}
     </div>
-  )
-}
+  );
+};
 
-export default MainNavLinks
+export default MainNavLinks;

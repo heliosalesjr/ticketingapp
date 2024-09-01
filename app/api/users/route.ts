@@ -4,6 +4,7 @@ import prisma from "@/prisma/db";
 import bcrypt from "bcryptjs";
 import { getServerSession } from "next-auth";
 import options from "../auth/[...nextauth]/options";
+//remove the ifs from const session for the trick of creating the 1st admin user.
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(options);
