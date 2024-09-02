@@ -19,7 +19,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
     where: { id: parseInt(params.id) },
   });
 
-  if (ok) {
+  if (!user) {
     return NextResponse.json({ error: "User Not Found" }, { status: 404 });
   }
 
