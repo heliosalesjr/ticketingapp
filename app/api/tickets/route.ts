@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import options from "../auth/[...nextauth]/options";
 
 export async function POST(request: NextRequest) {
+    
   const session = await getServerSession(options);
 
   if (!session) {

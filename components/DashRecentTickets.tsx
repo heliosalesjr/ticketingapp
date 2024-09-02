@@ -34,7 +34,7 @@ import {
                     <div className="ml-4 space-y-1">
                       <Link href={`tickets/${ticket.id}`}>
                         <p>{ticket.title}</p>
-                        <p>{ticket.assignedToUser?.name || "Unassigned"}</p>
+                        <p className="text-slate-400">{"Assigned to: " + (ticket.assignedToUser?.name || "Unassigned")}</p>
                       </Link>
                     </div>
                     <div className="ml-auto font-medium">
